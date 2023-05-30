@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+
+    <Version>0.1.2</Version>
+    <PackAsTool>true</PackAsTool>
+
+    <PackageId>Ref12.CompilerLog.Tasks</PackageId>
+    <PackageProjectUrl>https://github.com/Ref12/basic-compiler-logger</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ref12/basic-compiler-logger</RepositoryUrl>
+    <PackageReadmeFile>contentFiles\README.md</PackageReadmeFile>
+    <PackageLicenseFile>contentFiles\README.md</PackageLicenseFile>
+
+    <!-- Suppresses the warnings about the package not having assemblies in lib/*/.dll.-->
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <!-- Change the default location where NuGet will put the build output -->
+    <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Basic.CompilerLog.Util\Basic.CompilerLog.Util.csproj"
+        PrivateAssets="all" OutputItemType="Content" PackagePath="tasks\$(TargetFramework)\"
+        SetTargetFramework="TargetFramework=netstandard2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="build\CompilerLog.props" PackagePath="build\$(PackageId).props" 
+        CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="build\CompilerLog.targets" PackagePath="build\$(PackageId).targets" 
+        CopyToOutputDirectory="PreserveNewest" />
+
+    <None Include="sample\sample.proj" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\README.md" PackagePath="contentFiles\README.md" />
+    <Content Include="..\..\LICENSE" PackagePath="contentFiles\LICENSE" />
+  </ItemGroup>
+
+  <!--Unset pack as tool in order to -->
+  <Target Name="UnsetToolPackageType" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <PackageType></PackageType>
+    </PropertyGroup>
+  </Target>
+</Project>

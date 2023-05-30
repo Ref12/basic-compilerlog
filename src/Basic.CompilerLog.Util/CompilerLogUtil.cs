@@ -46,7 +46,11 @@ public static class CompilerLogUtil
         return diagnostics;
     }
 
-    public static bool TryConvertBinaryLog(Stream binaryLogStream, Stream compilerLogStream, List<string> diagnostics, Func<CompilerCall, bool>? predicate = null)
+    public static bool TryConvertBinaryLog(
+        Stream binaryLogStream,
+        Stream compilerLogStream,
+        List<string> diagnostics,
+        Func<CompilerCall, bool>? predicate = null)
     {
         predicate ??= static _ => true;
         var list = BinaryLogUtil.ReadAllCompilerCalls(binaryLogStream, diagnostics);

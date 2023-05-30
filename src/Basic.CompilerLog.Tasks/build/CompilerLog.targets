@@ -1,0 +1,15 @@
+<Project>
+
+    <Target Name="BinlogToCompilerLog">
+        <PropertyGroup>
+            <ComplogIncludeSatelliteAssemblies Condition="$(ComplogIncludeSatelliteAssemblies) == ''">false</ComplogIncludeSatelliteAssemblies>
+        </PropertyGroup>
+        <BinlogToCompilerLog
+            BinlogPath="$(BinlogPath)"
+            CompilerLogPath="$(CompilerLogPath)"
+            IncludeSatelliteAssemblies="$(ComplogIncludeSatelliteAssemblies)"
+            ProjectNames="$(ComplogProjectNames)"
+            TargetFrameworks="$(ComplogTargetFrameworks)">
+        </BinlogToCompilerLog>
+    </Target>
+</Project>

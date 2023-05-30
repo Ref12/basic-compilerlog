@@ -1,0 +1,10 @@
+<Project TreatAsLocalProperty="TaskAssembly;TaskFolder">
+
+  <PropertyGroup>
+    <TaskFolder>$(MSBuildThisFileDirectory)..\tasks\netstandard2.0</TaskFolder>
+    <TaskFolder Condition="$(OverrideComplogTaskFolder) != ''" >$(OverrideComplogTaskFolder)</TaskFolder>
+    <TaskAssembly>$(TaskFolder)\Basic.CompilerLog.Util.dll</TaskAssembly>
+  </PropertyGroup>
+
+  <UsingTask TaskName="Basic.CompilerLog.Tasks.BinlogToCompilerLog" AssemblyFile="$(TaskAssembly)" />
+</Project>

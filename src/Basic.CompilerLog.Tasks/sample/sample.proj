@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
+
+  <!--Property inputs to task. These can be set here on as global properties in command line.-->
+  <PropertyGroup>
+    <!--Location of input msbuild binlog-->
+    <BinlogPath></BinlogPath>
+
+    <!--Location to output compiler log-->
+    <CompilerLogPath></CompilerLogPath>
+
+    <!--Indicates if satellite assembly compilations should be included (default: false)-->
+    <ComplogIncludeSatelliteAssemblies></ComplogIncludeSatelliteAssemblies>
+
+    <!-- List of projects by name (with or without extension) to include in complog (empty means all) (semicolon separated)-->
+    <ComplogProjectNames></ComplogProjectNames>
+
+    <!-- List of target frameworks to include in complog (empty means all) (semicolon separated)-->
+    <ComplogTargetFrameworks></ComplogTargetFrameworks>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Replace package version below with real version -->
+    <PackageReference Include="Ref12.CompilerLog.Tasks" Version="$(PackageVersion)" />
+  </ItemGroup>
+
+</Project>
